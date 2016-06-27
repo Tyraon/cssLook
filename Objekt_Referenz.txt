@@ -17,3 +17,7 @@ look
 				"color1" und "color2" sind optional für die Farben des Verlaufs(Format(ausschließlich): "#000000")
 	boRad(id[,radius])	//Rundet die Ecken von dem Element(id) ab. "radius" ist optional und gibt den Radius der Abrundung an(Format: "5")
 	zoom(id,width,height)	//Vergrößert(zoomt) das Bild(id) auf 200%. "width" und "height" sind erforderlich da sonst original größe verwendet wird
+	persX(id,rotation)	//Kippt das Element(id) in dem angegebenen Winkel(rotation) um die X-Achse
+	persY(id,rotation)	//Kippt das Element(id) in dem angegebenen Winkel(rotation) um die Y-Achse
+	skew(id,X,Y)		//Verschiebt von dem Element(id) die Kanten um die angegebenen Winkel(X,Y) und lässt das Element rautenförmig aussehen.
+	trans(id,posX,posY)	//Verschiebt die Position des Elements(id) um die angegebenen Werte(posX,posY)

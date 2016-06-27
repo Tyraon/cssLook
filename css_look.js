@@ -58,6 +58,26 @@ var look = (function(){
 			$(input).on('mouseout', function(){
 				$(input).css({"width" : sizeX, "height" : sizeY});				
 			});
+		},
+		persX : function(input,rota){
+			persp = setDeg(rota);
+			rota = persp;
+			$(input).css({"transform" : "perspective(" + persp + "em) rotateX(" + rota + "deg)"});
+		},
+		persY : function(input,rota){
+			persp = setDeg(rota);
+			rota = persp;
+			$(input).css({"transform" : "perspective(" + persp + "em) rotateY(" + rota + "deg)"});
+		},
+		skew : function(input,rotaX,rotaY){
+			rotaX = setDeg(rotaX);
+			rotaY = setDeg(rotaY);
+			$(input).css({"transform" : "skew(" + rotaX + "deg," + rotaY + "deg)"});
+		},
+		trans : function(input,posX,posY){
+			posX = setPos(posX);
+			posY = setPos(posY);
+			$(input).css({"transform" : "translate(" + posX + "," + posY + ")"});
 		}
 	};
 })();
