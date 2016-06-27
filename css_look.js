@@ -13,13 +13,13 @@ var tag = (function(){
 
 var look = (function(){
 	return {
-		tShadow : function(input,color){
+		tShadow : function(input,color,posX,posY,cou){
 			color = setColor(color);
-			$(input).css({"text-shadow":"1px 1px 2px " + color});
+			$(input).css({"text-shadow" : setPos(posX) + " " + setPos(posY) + " " + setCou(cou) + " " + color});
 		},
 		bShadow : function(input,color,posX,posY,cou,dis,direct){
 			color = setColor(color);
-			$(input).css({"box-shadow": setDirect(direct) + " " + setPos(posX) + " " + setPos(posY) +  " "  + setCou(cou) + " " + setDis(dis) + " " + color});
+			$(input).css({"box-shadow" : setDirect(direct) + " " + setPos(posX) + " " + setPos(posY) +  " "  + setCou(cou) + " " + setDis(dis) + " " + color});
 		},
 		gradBg : function(input,color1,color2){
 			color1 = !color1 ? "#ffffff" : color1;
@@ -36,11 +36,51 @@ var look = (function(){
 		boRad : function(input,radius){
 			radius = !radius ? "10" : radius;
 			$(input).css({"border-radius" : radius + "px"});
+		},
+		rota2d : function(input,deg){
+			deg = setDeg(deg);
+			var browser = browserDetect();
+			var rotate = rotaBrowser(browser);
+//			console.log(rotate);
+			$(input).css({"transform" : "rotate(" + deg + "deg)"});
+		},
+		zoom : function(input,sizeX,sizeY){
+			var size = setSize(input,sizeX,sizeY);
+			sizeX = size[0];
+			sizeY = size[1];
+			$(input).css({"width" : sizeX, "height" : sizeY});
+			$(input).on('mouseover', function(){
+				var newX = (parseInt(sizeX)*2).toString();
+				var newY = (parseInt(sizeY)*2).toString();
+				console.log(sizeX);
+				$(input).css({"width" : newX, "height" : newY, "-webkit-transition" : "all 0.5s ease-in-out"});
+			});
+			$(input).on('mouseout', function(){
+				$(input).css({"width" : sizeX, "height" : sizeY});				
+			});
 		}
 	};
 })();
 
 //Funktionen
+function setSize(ele,width,height){
+	var size = !width || !height ? [$(ele).width(),$(ele).height()] : [width,height];
+	return size;
+}
+
+function setDeg(deg){
+	deg = !deg ? "0" : deg;
+	return deg;
+}
+
+function rotaBrowser(browser){
+	var rota = browser == "moz" ? "-moz-transform" :
+			browser == "ms" ? "-ms-transform" :
+			browser == "webkit" ? "-webkit-transform":
+			browser == "o" ? "-o-transform" : "transform";
+	return rota;
+}
+
 function setPos(pos){
 	var pos = !pos ? "5px" : pos + "px";
 	return pos;
@@ -57,7 +97,7 @@ function setCou(pos){
 }
 
 function setDirect(direct){
-	var direct = !direct ? "" : "inset";
+	var direct = direct == 1 ? "inset" : "";
 	return direct;
 }
 
