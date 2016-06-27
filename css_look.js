@@ -17,9 +17,9 @@ var look = (function(){
 			color = setColor(color);
 			$(input).css({"text-shadow":"1px 1px 2px " + color});
 		},
-		bShadow : function(input,color,posX,posY,cou,dis){
+		bShadow : function(input,color,posX,posY,cou,dis,direct){
 			color = setColor(color);
-			$(input).css({"box-shadow": setPos(posX) + " " + setPos(posY) +  " "  + setDis(dis) + " " + setCou(cou) + " " + color});
+			$(input).css({"box-shadow": setDirect(direct) + " " + setPos(posX) + " " + setPos(posY) +  " "  + setCou(cou) + " " + setDis(dis) + " " + color});
 		},
 		gradBg : function(input,color1,color2){
 			color1 = !color1 ? "#ffffff" : color1;
@@ -54,6 +54,11 @@ function setDis(pos){
 function setCou(pos){
 	var pos = !pos ? "10px" : pos + "px";
 	return pos;
+}
+
+function setDirect(direct){
+	var direct = !direct ? "" : "inset";
+	return direct;
 }
 
 function setColor(color){
