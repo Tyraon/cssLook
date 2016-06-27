@@ -1,0 +1,16 @@
+tag
+	head(input)		//Erzeugt eine Überschricht mit dem Text(input)
+	ref(addr,text)		//Erzeugt einen Link zur Adresse(addr) und dem Text(text)
+
+
+
+look
+	tShadow(id[,color])	//Versieht den Text des Elements(id) mit einem Textschatten.
+				  "color" ist optional für die Farbe des Schattens(Format: "#000000" oder "#000" oder "black")
+	bShadow(id[,color[,posX,posY,cou[,dis]]])	//Versieht das Elements(id) mit einem Schatten.
+				  "color" ist optional für die Farbe des Schattens(Format: "#000000" oder "#000" oder "black")
+				  "posX" und "posY" geben die Richtung des Schattens an(optional) und "cou" den Härtegrad/Verlauf(optional)
+				  Mit "dis" kann man die Distanz zum Element setzen(optional)
+	gradBg(id[,color1,color2]) //Versieht das Element mit einem Hintergrundverlauf.
+				"color1" und "color2" sind optional für die Farben des Verlaufs(Format(ausschließlich): "#000000")
+	boRad(id[,radius])	//Rundet die Ecken von dem Element(id) ab. "radius" ist optional und gibt den Radius der Abrundung an(Format: "5")
