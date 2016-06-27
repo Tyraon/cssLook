@@ -82,6 +82,7 @@ var look = (function(){
 	};
 })();
 
+
 //Funktionen
 function setSize(ele,width,height){
 	var size = !width || !height ? [$(ele).width(),$(ele).height()] : [width,height];
