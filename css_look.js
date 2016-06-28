@@ -52,7 +52,6 @@ var look = (function(){
 			$(input).on('mouseover', function(){
 				var newX = (parseInt(sizeX)*2).toString();
 				var newY = (parseInt(sizeY)*2).toString();
-				console.log(sizeX);
 				$(input).css({"width" : newX, "height" : newY, "-webkit-transition" : "all 0.5s ease-in-out"});
 			});
 			$(input).on('mouseout', function(){
@@ -93,7 +92,7 @@ var look = (function(){
 			$.keyframe.define([{
 				name : 'pulsi',
 				'0%' : {'box-shadow' : '0px 0px 5px 1px ' + color},
-				'50%' : {'box-shadow' : '0px 0px 15px 1px ' + color},
+				'50%' : {'box-shadow' : '0px 0px 20px 3px ' + color},
 				'100%' : {'box-shadow' : '0px 0px 5px 1px ' + color}
 			}]);
 			$(input).playKeyframe({
@@ -110,10 +109,10 @@ var look = (function(){
 			duration = setDeg(duration);
 			$.keyframe.define([{
 				name : 'rainbow',
-				'0%' : {'box-shadow' : '0px 0px 15px 1px #cc0000'},
-				'33%' : {'box-shadow' : '0px 0px 15px 1px #00cc00'},
-				'67%' : {'box-shadow' : '0px 0px 15px 1px #0000cc'},
-				'100%' : {'box-shadow' : '0px 0px 15px 1px #cc0000'}
+				'0%' : {'box-shadow' : '0px 0px 15px 3px #cc0000'},
+				'33%' : {'box-shadow' : '0px 0px 15px 3px #00cc00'},
+				'67%' : {'box-shadow' : '0px 0px 15px 3px #0000cc'},
+				'100%' : {'box-shadow' : '0px 0px 15px 3px #cc0000'}
 			}]);
 			$(input).playKeyframe({
 								   name : 'rainbow',
@@ -129,12 +128,21 @@ var look = (function(){
 			color = setColor(color);
 			var cHex1 = color;
 			var cHex2 = color;
-			//color = toDez(color);
 			direction = setDirection(direction);
 			orientation = setOrientation(orientation);
 			var browser = browserDetect();
 			var gradient = glasBrowser(browser,color,cHex1,cHex2,direction,orientation);
 			$(input).css({"background" : gradient});
+		},
+		glow : function(input,color){
+			color = setColor(color);
+			$(input).css({"box-shadow" : "0px 0px 0px 0px " + color});
+			$(input).on('mouseover', function(){
+				$(input).css({"box-shadow" : "0px 0px 10px 1px" + color, "-webkit-transition" : "all 0.15s ease-in-out"});
+			});
+			$(input).on('mouseout', function(){
+				$(input).css({"box-shadow" : "0px 0px 0px 0px " + color});				
+			});
 		}
 	};
 })();
@@ -247,7 +255,6 @@ function gradBrowser(browser,color1,color2,cHex1,cHex2,direction,orientation){
 
 function glasColor(color,faktor){
 	var rgb = [parseInt(color.substr(1,2),16),parseInt(color.substr(3,2),16),parseInt(color.substr(5,2),16)];
-	console.log(rgb);
 	rgb[0] = (rgb[0]+faktor)>=255 ? 255 : rgb[0]+faktor;
 	rgb[1] = (rgb[1]+faktor)>=255 ? 255 : rgb[1]+faktor;
 	rgb[2] = (rgb[2]+faktor)>=255 ? 255 : rgb[2]+faktor;

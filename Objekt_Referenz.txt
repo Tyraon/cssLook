@@ -12,7 +12,7 @@ look
 				  "color" ist optional für die Farbe des Schattens(Format: "#000000" oder "#000" oder "black")
 				  "posX" und "posY" geben die Richtung des Schattens an(optional) und "cou" den Härtegrad/Verlauf(optional)
 				  Mit "dis" kann man die Distanz zum Element setzen(optional)
-				  "direction" setzt den Schatten in das Element(optional)
+				  "direction"(1 oder 0) setzt den Schatten in das Element(optional)
 	gradBg(id[,color1,color2[,direction[,orientation]]]) //Versieht das Element mit einem Hintergrundverlauf.
 				"color1" und "color2" sind optional für die Farben des Verlaufs(Format(ausschließlich): "#000000")
 				Mit "direction" kann man die Laufrichtung("top", "left", "bottom", right") bestimmen und mit "orientation" zwischen "linear" und 
@@ -28,6 +28,7 @@ look
 	puls(id,color,duration)	//Lässt das Element(id) mit der angegebenen Farbe(color) in dem Zeitabstand(duration) pulsieren	
 	rainBow(id,duration)	//Gibt dem Element(id) einen Schein der in der angegebenen Zeit(duration) durch das Farbspektrum geht
 	glas(id,color)		//Setzt den Hintergrund vom Element(id) in Glasoptik mit der entsprechenden Grundfarbe(color) (am besten für Buttons geeignet)
+	glow(id,color)		//Lässt das Element(id) in der angegebenen Farbe(color) aufleuchten bei mouseover
 
 
 ###########################################################################################################################################################

@@ -23,24 +23,31 @@ look.boRad("#testbild","5");
 look.bShadow("#testbild","#000000","0","0","20","2");
 look.persX("#testbild","50");
 look.deep("#inhalt","#999999");
+look.glow("button","#00ff00");
+look.glas("button","#010960");
+look.boRad("button","5");
 look.tDeep(".text","#999999");
-look.puls(".text","#0000ff","2");
+look.puls(".text","#0099ff","2");
 look.boRad(".text","10");
 look.glas(".text","#101010");
+look.bShadow("#backg","#000000","-10","-10","20","2",1);
 });
 </script>
 <title>jsObjekte</title>
 </head>
 
-<body>
-<div id="ausgabe"></div>
+<body bgcolor="black">
 <br>
 <br>
 <br>
 <div id="inhalt"></div>
 <br>
 <br>
-<img id="testbild" src="img/testbild.jpg" style="margin-left:10px;" />
+<br>
+<div style="background:white;" id="backg">
+<div id="ausgabe"></div>
+<img id="testbild" src="img/testbild.jpg" style="margin-left:10px;" /></div>
 <h1 class="text" style="color:#ccc;">Guten Tag!</h1>
+<button>KlickMich</button>
 </body>
 </html>
