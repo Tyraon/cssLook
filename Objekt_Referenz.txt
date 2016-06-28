@@ -21,3 +21,6 @@ look
 	persY(id,rotation)	//Kippt das Element(id) in dem angegebenen Winkel(rotation) um die Y-Achse
 	skew(id,X,Y)		//Verschiebt von dem Element(id) die Kanten um die angegebenen Winkel(X,Y) und lässt das Element rautenförmig aussehen.
 	trans(id,posX,posY)	//Verschiebt die Position des Elements(id) um die angegebenen Werte(posX,posY)
+	deep(id,color)		//Versieht das Element(id) mit einer räumlichen Tiefe in der angegebenen Farbe(color)
+	tDeep(id,color)		//versieht den Text(id) mit einer räumlichen Tiefe in der angegebenen Farbe(color)
+	puls(id,color,duration)	//Lässt das Element(id) mit der angegebenen Farbe(color) in dem Zeitabstand(duration) pulsieren	

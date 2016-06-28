@@ -28,7 +28,6 @@ var look = (function(){
 			var cHex2 = color2;
 			color1 = toDez(color1);
 			color2 = toDez(color2);
-//			alert(color1);
 			var browser = browserDetect();
 			var gradient = gradBrowser(browser,color1,color2,cHex1,cHex2);
 			$(input).css({"background" : gradient});
@@ -41,7 +40,6 @@ var look = (function(){
 			deg = setDeg(deg);
 			var browser = browserDetect();
 			var rotate = rotaBrowser(browser);
-//			console.log(rotate);
 			$(input).css({"transform" : "rotate(" + deg + "deg)"});
 		},
 		zoom : function(input,sizeX,sizeY){
@@ -78,12 +76,51 @@ var look = (function(){
 			posX = setPos(posX);
 			posY = setPos(posY);
 			$(input).css({"transform" : "translate(" + posX + "," + posY + ")"});
+		},
+		deep : function(input,color){
+			color = setColor(color);
+			$(input).css({"box-shadow" : "1px 1px 0px rgb(" + deepColor(color,1) + "), 2px 2px 0px rgb(" + deepColor(color,1.5) + "), 3px 3px 0px rgb(" + deepColor(color,2) + "), 4px 4px 0px rgb(" + deepColor(color,2.5) + "), 5px 5px 0px rgb(" + deepColor(color,3) + "), 6px 6px 0px rgb(" + deepColor(color,3.5) + "), 7px 7px 0px rgb(" + deepColor(color,4) + "), 8px 8px 0px rgb(" + deepColor(color,4.5) + "), 9px 9px 0px rgb(" + deepColor(color,5) + ")"});
+		},
+		tDeep : function(input,color){
+			color = setColor(color);
+			$(input).css({"text-shadow" : "1px 1px 0px rgb(" + deepColor(color,1) + "), 2px 2px 0px rgb(" + deepColor(color,2) + "), 3px 3px 0px rgb(" + deepColor(color,3) + "), 4px 4px 0px rgb(" + deepColor(color,4) + "), 5px 5px 0px rgb(" + deepColor(color,5) + ")"});
+		},
+		puls : function(input,color,duration){
+			color = setColor(color);
+			duration = setDeg(duration);
+			$.keyframe.define([{
+				name : 'pulsi',
+				'0%' : {'box-shadow' : '0px 0px 5px 1px ' + color},
+				'50%' : {'box-shadow' : '0px 0px 15px 1px ' + color},
+				'100%' : {'box-shadow' : '0px 0px 5px 1px ' + color}
+			}]);
+			$(input).playKeyframe({
+								   name : 'pulsi',
+								   duration : duration + 's',
+								   timingFunction : 'linear',
+								   iterationCount : 'infinite',
+								   direction : 'normal',
+								   fillMode : 'forwards',
+								   complete : function(){}
+								   });
 		}
 	};
 })();
 
 
 //Funktionen
+function deepColor(color,step){
+	color = color.substr(1,6);
+	var red = parseInt(color.substr(0,2),16);
+	var green = parseInt(color.substr(2,2),16);
+	var blue = parseInt(color.substr(4,2),16);
+	red = red >= "20" ? (red-(20*step)).toString() : "00";
+	green = green >= "20" ? (green-(20*step)).toString() : "00";
+	blue = blue >= "20" ? (blue-(20*step)).toString() : "00";
+	color = red + "," + green + "," + blue;
+	return color;
+}
+
 function setSize(ele,width,height){
 	var size = !width || !height ? [$(ele).width(),$(ele).height()] : [width,height];
 	return size;

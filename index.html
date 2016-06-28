@@ -2,7 +2,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script src="https://code.jquery.com/jquery-2.0.3.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquerykeyframes/0.0.9/jquery.keyframes.min.js"></script>
 <script type="text/javascript" src="css_look.js"></script>
+
+<!--BeispielScript-->
 <script>
 $(document).ready(function(){
 var ausg = tag.head("Hello World!");
@@ -10,14 +13,16 @@ $("#ausgabe").html(ausg);
 var inh = tag.ref("www.google.de","GOOGLE");
 $("#inhalt").html(inh);
 look.tShadow("#tag-head","#c00","1","1","2");
-look.bShadow("#inhalt","#000000","-5","-5","20","5",0);
 look.gradBg("#inhalt","#00ff00","#ff0000");
-look.boRad("#inhalt","5");
-look.rota2d("#inhalt","2");
+look.rota2d("#inhalt","3");
 look.zoom("#testbild","200","100");
 look.boRad("#testbild","5");
-look.bShadow("#testbild","#000000","0","0","10");
+look.bShadow("#testbild","#000000","0","0","20","2");
 look.persX("#testbild","50");
+look.deep("#inhalt","#999999");
+look.tDeep("#text","#999999");
+look.puls("#text","#0000ff","2");
+look.boRad("#text","10");
 });
 </script>
 <title>jsObjekte</title>
@@ -31,7 +36,7 @@ look.persX("#testbild","50");
 <div id="inhalt"></div>
 <br>
 <br>
-<img id="testbild" src="img/testbild.jpg" />
-
+<img id="testbild" src="img/testbild.jpg" style="margin-left:10px;" />
+<h1 id="text" style="color:#ccc;">Guten Tag!</h1>
 </body>
 </html>
