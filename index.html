@@ -12,7 +12,7 @@ var ausg = tag.head("Hello World!");
 $("#ausgabe").html(ausg);
 var inh = tag.ref("www.google.de","GOOGLE");
 $("#inhalt").html(inh);
-look.tShadow("#tag-head","#c00","1","1","2");
+look.tShadow("#tag-head","#000","1","1","2");
 look.rainBow("#tag-head","5");
 look.boRad("#tag-head","5");
 look.glas("#tag-head","#e0e0e0");
@@ -31,6 +31,8 @@ look.puls(".text","#0099ff","2");
 look.boRad(".text","10");
 look.glas(".text","#101010");
 look.bShadow("#backg","#000000","-10","-10","20","2",1);
+look.tShadow("button","#101010","0","0","1");
+look.tHover(".text","#cc0000");
 });
 </script>
 <title>jsObjekte</title>
@@ -45,9 +47,9 @@ look.bShadow("#backg","#000000","-10","-10","20","2",1);
 <br>
 <br>
 <div style="background:white;" id="backg">
-<div id="ausgabe"></div>
+<div id="ausgabe" style="color:#ccc;"></div>
 <img id="testbild" src="img/testbild.jpg" style="margin-left:10px;" /></div>
 <h1 class="text" style="color:#ccc;">Guten Tag!</h1>
-<button>KlickMich</button>
+<button style="color:white;">HoverMe</button>
 </body>
 </html>

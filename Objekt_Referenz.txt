@@ -23,6 +23,7 @@ look
 	rainBow(id,duration)	//Gibt dem Element(id) einen Schein der in der angegebenen Zeit(duration) durch das Farbspektrum geht
 	glas(id,color)		//Setzt den Hintergrund vom Element(id) in Glasoptik mit der entsprechenden Grundfarbe(color) (am besten für Buttons geeignet)
 	glow(id,color)		//Lässt das Element(id) in der angegebenen Farbe(color) aufleuchten bei mouseover
+	tHover(id,color)	//Ändert die Farbe(color) des Textes vom Element(id) bei mouseover
 
 
 ###########################################################################################################################################################

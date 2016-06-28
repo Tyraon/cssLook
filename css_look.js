@@ -48,14 +48,14 @@ var look = (function(){
 			var size = setSize(input,sizeX,sizeY);
 			sizeX = size[0];
 			sizeY = size[1];
-			$(input).css({"width" : sizeX, "height" : sizeY});
+			$(input).css({"width" : sizeX, "height" : sizeY, "cursor" : "default"});
 			$(input).on('mouseover', function(){
 				var newX = (parseInt(sizeX)*2).toString();
 				var newY = (parseInt(sizeY)*2).toString();
-				$(input).css({"width" : newX, "height" : newY, "-webkit-transition" : "all 0.5s ease-in-out"});
+				$(input).css({"width" : newX, "height" : newY, "-webkit-transition" : "all 0.5s ease-in-out", "cursor" : "zoom-in"});
 			});
 			$(input).on('mouseout', function(){
-				$(input).css({"width" : sizeX, "height" : sizeY});				
+				$(input).css({"width" : sizeX, "height" : sizeY, "cursor" : "default"});				
 			});
 		},
 		persX : function(input,rota){
@@ -142,6 +142,16 @@ var look = (function(){
 			});
 			$(input).on('mouseout', function(){
 				$(input).css({"box-shadow" : "0px 0px 0px 0px " + color});				
+			});
+		},
+		tHover : function(input,color){
+			color = setColor(color);
+			var color2 = $(input).css("color");
+			$(input).on('mouseover', function(){
+				$(input).css({"color" : color});
+			});
+			$(input).on('mouseout', function(){
+				$(input).css({"color" : color2});
 			});
 		}
 	};
