@@ -2,6 +2,7 @@
 
 Einbinden in das eigene Script:
 
+``` html
 <head>
 <script src="https://code.jquery.com/jquery-2.0.3.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquerykeyframes/0.0.9/jquery.keyframes.min.js"></script>
@@ -19,7 +20,7 @@ look.boRad("#feld","10");
 <body>
 <div id="feld">Hello World!</div>
 ...
-
+```
 
 
 cssLook ist ein Script welches leicht und einfach Elemente mit CSS3 Eigenschaften belegt ohne zu wissen wie diese in CSS geschrieben werden.
