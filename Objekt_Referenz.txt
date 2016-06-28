@@ -3,7 +3,7 @@ tag
 	ref(addr,text)		//Erzeugt einen Link zur Adresse(addr) und dem Text(text)
 
 
-
+#############################################################################################################################################################
 look
 	tShadow(id[,color[,posX,posY,cou]])	//Versieht den Text des Elements(id) mit einem Textschatten.
 				  "color" ist optional für die Farbe des Schattens(Format: "#000000" oder "#000" oder "black")
@@ -13,8 +13,10 @@ look
 				  "posX" und "posY" geben die Richtung des Schattens an(optional) und "cou" den Härtegrad/Verlauf(optional)
 				  Mit "dis" kann man die Distanz zum Element setzen(optional)
 				  "direction" setzt den Schatten in das Element(optional)
-	gradBg(id[,color1,color2]) //Versieht das Element mit einem Hintergrundverlauf.
+	gradBg(id[,color1,color2[,direction[,orientation]]]) //Versieht das Element mit einem Hintergrundverlauf.
 				"color1" und "color2" sind optional für die Farben des Verlaufs(Format(ausschließlich): "#000000")
+				Mit "direction" kann man die Laufrichtung("top", "left", "bottom", right") bestimmen und mit "orientation" zwischen "linear" und 
+				"radial" entscheiden(optional)
 	boRad(id[,radius])	//Rundet die Ecken von dem Element(id) ab. "radius" ist optional und gibt den Radius der Abrundung an(Format: "5")
 	zoom(id,width,height)	//Vergrößert(zoomt) das Bild(id) auf 200%. "width" und "height" sind erforderlich da sonst original größe verwendet wird
 	persX(id,rotation)	//Kippt das Element(id) in dem angegebenen Winkel(rotation) um die X-Achse
@@ -24,3 +26,12 @@ look
 	deep(id,color)		//Versieht das Element(id) mit einer räumlichen Tiefe in der angegebenen Farbe(color)
 	tDeep(id,color)		//versieht den Text(id) mit einer räumlichen Tiefe in der angegebenen Farbe(color)
 	puls(id,color,duration)	//Lässt das Element(id) mit der angegebenen Farbe(color) in dem Zeitabstand(duration) pulsieren	
+	rainBow(id,duration)	//Gibt dem Element(id) einen Schein der in der angegebenen Zeit(duration) durch das Farbspektrum geht
+	glas(id,color)		//Setzt den Hintergrund vom Element(id) in Glasoptik mit der entsprechenden Grundfarbe(color) (am besten für Buttons geeignet)
+
+
+###########################################################################################################################################################
+Beispiel:
+
+look.boRad("#id","5");
+look.boRad(".class","5");

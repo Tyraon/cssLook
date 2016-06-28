@@ -21,15 +21,17 @@ var look = (function(){
 			color = setColor(color);
 			$(input).css({"box-shadow" : setDirect(direct) + " " + setPos(posX) + " " + setPos(posY) +  " "  + setCou(cou) + " " + setDis(dis) + " " + color});
 		},
-		gradBg : function(input,color1,color2){
+		gradBg : function(input,color1,color2,direction,orientation){
 			color1 = !color1 ? "#ffffff" : color1;
 			color2 = setColor(color2);
 			var cHex1 = color1;
 			var cHex2 = color2;
 			color1 = toDez(color1);
 			color2 = toDez(color2);
+			direction = setDirection(direction);
+			orientation = setOrientation(orientation);
 			var browser = browserDetect();
-			var gradient = gradBrowser(browser,color1,color2,cHex1,cHex2);
+			var gradient = gradBrowser(browser,color1,color2,cHex1,cHex2,direction,orientation);
 			$(input).css({"background" : gradient});
 		},
 		boRad : function(input,radius){
@@ -103,6 +105,36 @@ var look = (function(){
 								   fillMode : 'forwards',
 								   complete : function(){}
 								   });
+		},
+		rainBow : function(input,duration){
+			duration = setDeg(duration);
+			$.keyframe.define([{
+				name : 'rainbow',
+				'0%' : {'box-shadow' : '0px 0px 15px 1px #cc0000'},
+				'33%' : {'box-shadow' : '0px 0px 15px 1px #00cc00'},
+				'67%' : {'box-shadow' : '0px 0px 15px 1px #0000cc'},
+				'100%' : {'box-shadow' : '0px 0px 15px 1px #cc0000'}
+			}]);
+			$(input).playKeyframe({
+								   name : 'rainbow',
+								   duration : duration + 's',
+								   timingFunction : 'linear',
+								   iterationCount : 'infinite',
+								   direction : 'normal',
+								   fillMode : 'forwards',
+								   complete : function(){}
+								   });
+		},
+		glas : function(input,color,direction,orientation){
+			color = setColor(color);
+			var cHex1 = color;
+			var cHex2 = color;
+			//color = toDez(color);
+			direction = setDirection(direction);
+			orientation = setOrientation(orientation);
+			var browser = browserDetect();
+			var gradient = glasBrowser(browser,color,cHex1,cHex2,direction,orientation);
+			$(input).css({"background" : gradient});
 		}
 	};
 })();
@@ -164,6 +196,16 @@ function setColor(color){
 	return color;
 }
 
+function setDirection(direction){
+	direction = !direction ? "top" : direction;
+	return direction;
+}
+
+function setOrientation(orientation){
+	orientation = !orientation ? "linear" : orientation;
+	return orientation;
+}
+
 function toDez(color){
 	color = color.substr(1,6);
 	var red = parseInt(color.substr(0,2),16).toString();
@@ -192,10 +234,31 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 	return browser;
 }
 
-function gradBrowser(browser,color1,color2,cHex1,cHex2){
-	var gradient1 = "-webkit-linear-gradient(top, rgba(" + color1 + ",1) 0%, rgba(" + color2 + ",1) 100%)";
-	var gradient2 = "-moz-linear-gradient(top, rgba(" + color1 + ",1) 0%, rgba(" + color2 + ",1) 100%)";
-	var gradient3 = "linear-gradient(top, rgba(" + color1 + ",1) 0%, rgba(" + color2 + ",1) 100%)";
+function gradBrowser(browser,color1,color2,cHex1,cHex2,direction,orientation){
+	var gradient1 = "-webkit-" + orientation + "-gradient(" + direction + ", rgba(" + color1 + ",1) 0%, rgba(" + color2 + ",1) 100%)";
+	var gradient2 = "-moz-" + orientation + "-gradient(" + direction + ", rgba(" + color1 + ",1) 0%, rgba(" + color2 + ",1) 100%)";
+	var gradient3 = "" + orientation + "-gradient(" + direction + ", rgba(" + color1 + ",1) 0%, rgba(" + color2 + ",1) 100%)";
+	var gradient4 = "progid:DXImageTransform.Microsoft.gradient( startColorstr='" + cHex1 + "', endColorstr='#" + cHex2 + "',GradientType=0 )";
+	var gradient = browser == "moz" ? gradient2 : 
+				browser == "webkit" ? gradient1 :
+				browser == "ms" ? gradient4 : gradient3;
+	return gradient;
+}
+
+function glasColor(color,faktor){
+	var rgb = [parseInt(color.substr(1,2),16),parseInt(color.substr(3,2),16),parseInt(color.substr(5,2),16)];
+	console.log(rgb);
+	rgb[0] = (rgb[0]+faktor)>=255 ? 255 : rgb[0]+faktor;
+	rgb[1] = (rgb[1]+faktor)>=255 ? 255 : rgb[1]+faktor;
+	rgb[2] = (rgb[2]+faktor)>=255 ? 255 : rgb[2]+faktor;
+	var color = rgb[0].toString() + "," + rgb[1].toString() + "," + rgb[2].toString();
+	return color;
+}
+
+function glasBrowser(browser,color,cHex1,cHex2,direction,orientation){
+	var gradient1 = "-webkit-" + orientation + "-gradient(" + direction + ", rgba(" + glasColor(color,160) + ",1) 0%, rgba(" + glasColor(color,100) + ",1) 50%, rgba(" + glasColor(color,0) + ",1) 51%, rgba(" + glasColor(color,-1) + ",1) 100%)";
+	var gradient2 = "-moz-" + orientation + "-gradient(" + direction + ", rgba(" + glasColor(color,160) + ",1) 0%, rgba(" + glasColor(color,100) + ",1) 50%, rgba(" + glasColor(color,0) + ",1) 51%, rgba(" + glasColor(color,-1) + ",2) 100%)";
+	var gradient3 = "" + orientation + "-gradient(" + direction + ", rgba(" + glasColor(color,160) + ",1) 0%, rgba(" + glasColor(color,100) + ",1) 50%, rgba(" + glasColor(color,0) + ",1) 51%, rgba(" + glasColor(color,-1) + ",1) 100%)";
 	var gradient4 = "progid:DXImageTransform.Microsoft.gradient( startColorstr='" + cHex1 + "', endColorstr='#" + cHex2 + "',GradientType=0 )";
 	var gradient = browser == "moz" ? gradient2 : 
 				browser == "webkit" ? gradient1 :

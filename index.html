@@ -13,16 +13,20 @@ $("#ausgabe").html(ausg);
 var inh = tag.ref("www.google.de","GOOGLE");
 $("#inhalt").html(inh);
 look.tShadow("#tag-head","#c00","1","1","2");
-look.gradBg("#inhalt","#00ff00","#ff0000");
+look.rainBow("#tag-head","5");
+look.boRad("#tag-head","5");
+look.glas("#tag-head","#e0e0e0");
+look.gradBg("#inhalt","#00ff00","#ff0000","top","linear");
 look.rota2d("#inhalt","3");
 look.zoom("#testbild","200","100");
 look.boRad("#testbild","5");
 look.bShadow("#testbild","#000000","0","0","20","2");
 look.persX("#testbild","50");
 look.deep("#inhalt","#999999");
-look.tDeep("#text","#999999");
-look.puls("#text","#0000ff","2");
-look.boRad("#text","10");
+look.tDeep(".text","#999999");
+look.puls(".text","#0000ff","2");
+look.boRad(".text","10");
+look.glas(".text","#101010");
 });
 </script>
 <title>jsObjekte</title>
@@ -37,6 +41,6 @@ look.boRad("#text","10");
 <br>
 <br>
 <img id="testbild" src="img/testbild.jpg" style="margin-left:10px;" />
-<h1 id="text" style="color:#ccc;">Guten Tag!</h1>
+<h1 class="text" style="color:#ccc;">Guten Tag!</h1>
 </body>
 </html>
