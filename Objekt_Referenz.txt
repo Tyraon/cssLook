@@ -1,9 +1,3 @@
-tag
-	head(input)		//Erzeugt eine Überschricht mit dem Text(input)
-	ref(addr,text)		//Erzeugt einen Link zur Adresse(addr) und dem Text(text)
-
-
-#############################################################################################################################################################
 look
 	tShadow(id[,color[,posX,posY,cou]])	//Versieht den Text des Elements(id) mit einem Textschatten.
 				  "color" ist optional für die Farbe des Schattens(Format: "#000000" oder "#000" oder "black")
