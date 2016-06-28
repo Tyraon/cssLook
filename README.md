@@ -1,4 +1,4 @@
-##cssLook
+## cssLook
 
 Einbinden in das eigene Script:
 
