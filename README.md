@@ -1,4 +1,4 @@
-﻿cssLook
+##cssLook
 
 Einbinden in das eigene Script:
 
@@ -23,6 +23,6 @@ look.boRad("#feld","10");
 ```
 
 
-cssLook ist ein Script welches leicht und einfach Elemente mit CSS3 Eigenschaften belegt ohne zu wissen wie diese in CSS geschrieben werden.
+**cssLook** ist ein Script, mit dem man leicht und einfach Elemente mit CSS3 Eigenschaften belegen kann, ohne selber zu wissen wie diese in CSS geschrieben werden.
 Schreibweise und Aufruf steht in der Objekt_Referenz.txt
 Zubeachten ist, dass "jquery" und "jquerykeyframes" mit in dem HTML-Script eingebunden werden.
