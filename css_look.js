@@ -138,7 +138,7 @@ var look = (function(){
 			color = setColor(color);
 			$(input).css({"box-shadow" : "0px 0px 0px 0px " + color});
 			$(input).on('mouseover', function(){
-				$(input).css({"box-shadow" : "0px 0px 10px 1px" + color, "-webkit-transition" : "all 0.15s ease-in-out"});
+				$(input).css({"box-shadow" : "0px 0px 10px 1px" + color, "transition" : "all 0.15s ease-in-out"});
 			});
 			$(input).on('mouseout', function(){
 				$(input).css({"box-shadow" : "0px 0px 0px 0px " + color});				
@@ -152,6 +152,18 @@ var look = (function(){
 			});
 			$(input).on('mouseout', function(){
 				$(input).css({"color" : color2});
+			});
+		},
+		openMenu : function(input,sizeX,sizeY,drag,arrow){
+			arrow ? $(arrow).css({"opacity" : "1"}) : "";
+			$(input).css({"width" : "20px", "height" : "20px", "overflow" : "hidden"});
+			$(input).on('mouseover', function(){
+				arrow ? $(arrow).css({"opacity" : "0", "transition" : "all 0.5s ease-in-out"}) : "";
+				$(input).css({"width" : sizeX + "px", "height" : sizeY + "px", "transform" : "translateX(" + setDrag(drag,sizeX) + ")", "transition" : "all 0.5s ease-in-out"});
+			});
+			$(input).on('mouseout', function(){
+				arrow ? $(arrow).css({"opacity" : "1"}) : "";
+				$(input).css({"width" : "20px", "height" : "20px", "margin-left" : "0px"});
 			});
 		}
 	};
@@ -179,6 +191,11 @@ function setSize(ele,width,height){
 function setDeg(deg){
 	deg = !deg ? "0" : deg;
 	return deg;
+}
+
+function setDrag(drag,pos){
+	pos = drag == 1 ? "-" + pos : "0";
+	return pos;
 }
 
 function rotaBrowser(browser){
@@ -245,10 +262,10 @@ var isIE = /*@cc_on!@*/false || !!document.documentMode;
 var isEdge = !isIE && !!window.StyleMedia;
     // Chrome 1+
 var isChrome = !!window.chrome && !!window.chrome.webstore;
-		var browser = isOpera ? "o" :
-					isFirefox ? "moz":
-					isSafari || isChrome ? "webkit":
-					isIE || isEdge ? "ms": "other";
+		var browser = isOpera ? "-o-" :
+					isFirefox ? "-moz-":
+					isSafari || isChrome ? "-webkit-":
+					isIE || isEdge ? "-ms-": "";
 	return browser;
 }
 
@@ -257,9 +274,9 @@ function gradBrowser(browser,color1,color2,cHex1,cHex2,direction,orientation){
 	var gradient2 = "-moz-" + orientation + "-gradient(" + direction + ", rgba(" + color1 + ",1) 0%, rgba(" + color2 + ",1) 100%)";
 	var gradient3 = "" + orientation + "-gradient(" + direction + ", rgba(" + color1 + ",1) 0%, rgba(" + color2 + ",1) 100%)";
 	var gradient4 = "progid:DXImageTransform.Microsoft.gradient( startColorstr='" + cHex1 + "', endColorstr='#" + cHex2 + "',GradientType=0 )";
-	var gradient = browser == "moz" ? gradient2 : 
-				browser == "webkit" ? gradient1 :
-				browser == "ms" ? gradient4 : gradient3;
+	var gradient = browser == "-moz-" ? gradient2 : 
+				browser == "-webkit-" ? gradient1 :
+				browser == "-ms-" ? gradient4 : gradient3;
 	return gradient;
 }
 
@@ -277,8 +294,8 @@ function glasBrowser(browser,color,cHex1,cHex2,direction,orientation){
 	var gradient2 = "-moz-" + orientation + "-gradient(" + direction + ", rgba(" + glasColor(color,160) + ",1) 0%, rgba(" + glasColor(color,100) + ",1) 50%, rgba(" + glasColor(color,0) + ",1) 51%, rgba(" + glasColor(color,-1) + ",2) 100%)";
 	var gradient3 = "" + orientation + "-gradient(" + direction + ", rgba(" + glasColor(color,160) + ",1) 0%, rgba(" + glasColor(color,100) + ",1) 50%, rgba(" + glasColor(color,0) + ",1) 51%, rgba(" + glasColor(color,-1) + ",1) 100%)";
 	var gradient4 = "progid:DXImageTransform.Microsoft.gradient( startColorstr='" + cHex1 + "', endColorstr='#" + cHex2 + "',GradientType=0 )";
-	var gradient = browser == "moz" ? gradient2 : 
-				browser == "webkit" ? gradient1 :
-				browser == "ms" ? gradient4 : gradient3;
+	var gradient = browser == "-moz-" ? gradient2 : 
+				browser == "-webkit-" ? gradient1 :
+				browser == "-ms-" ? gradient4 : gradient3;
 	return gradient;
 }

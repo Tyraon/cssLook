@@ -24,6 +24,10 @@ look
 	glas(id,color)		//Setzt den Hintergrund vom Element(id) in Glasoptik mit der entsprechenden Grundfarbe(color) (am besten für Buttons geeignet)
 	glow(id,color)		//Lässt das Element(id) in der angegebenen Farbe(color) aufleuchten bei mouseover
 	tHover(id,color)	//Ändert die Farbe(color) des Textes vom Element(id) bei mouseover
+	openMenu(id,X,Y,drag,icon) //Ändert die Größe des Elements(id)(es wird div empfohlen) auf 20px X 20px. Bei mouseover wird das Element auf die angegebene
+				Größe(X,Y) vergrößert. Über "drag" kann die Laufrichtung der Vergrößerung(0 = nach rechts, 1 = nach links) angegeben werden.
+				Wenn der Rand des Bildschirms erreicht ist vergrößert er automatisch in die entgegen gesetzte Richtung. Mit "icon" kann ein
+				Bildsymbol(z.B. ein Pfeil) dann ausgeblendet werden wenn das Menü offen ist.
 
 
 ###########################################################################################################################################################
